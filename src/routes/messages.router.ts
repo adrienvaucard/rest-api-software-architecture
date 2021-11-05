@@ -8,11 +8,11 @@ const messagesService = new MessagesService();
 
 /**
  * @openapi
- * /users:
+ * /messages:
  *   get:
- *     summary: Retrieve a list of users
+ *     summary: Retrieve a list of messages
  */
- messagesRouter.get('/', (req, res) => {
+messagesRouter.get('/', (req, res) => {
     const messages = messagesService.getAllMessages();
     res.status(200).send(messages);
 })
@@ -20,10 +20,10 @@ const messagesService = new MessagesService();
 
 /**
  * @openapi
- * /users:
+ * /messages:
  *   post:
- *     summary: Create a new user
- *     description: creates a new user
+ *     summary: Create a new message
+ *     description: creates a new message
  */
 messagesRouter.post('/', (req, res) => {
     try {
@@ -33,6 +33,13 @@ messagesRouter.post('/', (req, res) => {
     }
 })
 
+/**
+ * @openapi
+ * /messages:
+ *   put:
+ *     summary: Update a message
+ *     description: Update a message
+ */
 messagesRouter.put('/:messageId', (req, res) => {
     try {
         res.status(200).send(messagesService.updateMessage(req.body));
@@ -41,6 +48,13 @@ messagesRouter.put('/:messageId', (req, res) => {
     }
 })
 
+/**
+ * @openapi
+ * /messages:
+ *   delete:
+ *     summary: Delete a message
+ *     description: Delete a message
+ */
 messagesRouter.delete('/:messageID', (req: any, res) => {
     try {
         res.status(200).send(messagesService.deleteMessage(req.params.messageID, req.message.id))
