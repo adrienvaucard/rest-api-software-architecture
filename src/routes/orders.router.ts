@@ -1,10 +1,12 @@
 import { Router } from 'express';
 import { UnknownOrderError } from '../errors/unknown-order.error';
 import { OrdersService } from '../services/orders.service';
+import { JWTService } from '../services/middleware.service';
+
 const ordersRouter = Router();
 
 const ordersService = new OrdersService();
-
+const jwtService = new JWTService()
 
 /**
  * @openapi
@@ -12,7 +14,7 @@ const ordersService = new OrdersService();
  *   get:
  *     summary: Retrieve a list of orders
  */
-ordersRouter.get('/', (req, res) => {
+ordersRouter.get('/', jwtService.verify, (req, res) => {
     const orders = ordersService.getAllOrders();
     res.status(200).send(orders);
 })
@@ -40,7 +42,7 @@ ordersRouter.post('/', (req, res) => {
  *     summary: Edit an order
  *     description: Edit an order
  */
-ordersRouter.put('/:orderID', (req, res) => {
+ordersRouter.put('/:orderID', jwtService.verify, (req, res) => {
     try {
         res.status(200).send(ordersService.updateOrder(req.body));
     } catch (error) {
@@ -55,7 +57,7 @@ ordersRouter.put('/:orderID', (req, res) => {
  *     summary: Delete an order
  *     description: Delete an order
  */
-ordersRouter.delete('/:orderID', (req: any, res) => {
+ordersRouter.delete('/:orderID', jwtService.verify, (req: any, res) => {
     try {
         res.status(200).send(ordersService.deleteOrder(req.params.orderID, req.order.id))
     } catch (error) {

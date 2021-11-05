@@ -1,9 +1,12 @@
 import { Router } from 'express';
 import { UnknownCommentError } from '../errors/unknown-comment.error';
 import { CommentsService } from '../services/comments.service';
+import { JWTService } from '../services/middleware.service';
+
 const commentsRouter = Router();
 
 const commentsService = new CommentsService();
+const jwtService = new JWTService()
 
 
 /**
@@ -40,7 +43,7 @@ commentsRouter.post('/', (req, res) => {
  *     summary: Edit a comment
  *     description: Edit a comment
  */
-commentsRouter.put('/:commentID', (req, res) => {
+commentsRouter.put('/:commentID', jwtService.verify, (req, res) => {
     try {
         res.status(200).send(commentsService.updateComment(req.body));
     } catch (error) {
@@ -55,7 +58,7 @@ commentsRouter.put('/:commentID', (req, res) => {
  *     summary: Delete a comment
  *     description: Delete a comment
  */
-commentsRouter.delete('/:commentID', (req: any, res) => {
+commentsRouter.delete('/:commentID', jwtService.verify, (req: any, res) => {
     try {
         res.status(200).send(commentsService.deleteComment(req.params.commentID, req.comment.id))
     } catch (error) {
