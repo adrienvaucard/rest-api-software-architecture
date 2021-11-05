@@ -43,6 +43,12 @@ usersRouter.post('/', (req, res) => {
     }
 })
 
+/**
+ * @openapi
+ * /users:
+ *   put:
+ *     summary: Edit a user
+ */
 usersRouter.put('/:userID', (req, res) => {
     try {
         res.status(200).send(usersService.updateUser(req.body));
@@ -51,6 +57,12 @@ usersRouter.put('/:userID', (req, res) => {
     }
 })
 
+/**
+ * @openapi
+ * /users:
+ *   delete:
+ *     summary: Delete a user
+ */
 usersRouter.delete('/:userID', (req: any, res) => {
     req.user = {
         id: 1

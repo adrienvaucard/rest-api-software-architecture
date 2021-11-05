@@ -87,6 +87,13 @@ booksRouter.post('/', (req, res) => {
     }
 })
 
+/**
+ * @openapi
+ * /users:
+ *   put:
+ *     summary: Edit a user
+ *     description: Edit a user
+ */
 booksRouter.put('/:bookId', (req, res) => {
     try {
         res.status(200).send(booksService.updateBook(req.body));
@@ -95,6 +102,13 @@ booksRouter.put('/:bookId', (req, res) => {
     }
 })
 
+/**
+ * @openapi
+ * /users:
+ *   delete:
+ *     summary: Delete a user
+ *     description: Delete a user
+ */
 booksRouter.delete('/:bookID', (req: any, res) => {
     try {
         res.status(200).send(booksService.deleteBook(req.params.bookID, req.book.id))
