@@ -38,7 +38,7 @@ commentsRouter.post('/', (req, res) => {
 
 /**
  * @openapi
- * /comments:
+ * /comments/:id:
  *   put:
  *     summary: Edit a comment
  *     description: Edit a comment
@@ -53,7 +53,7 @@ commentsRouter.put('/:commentID', jwtService.verify, (req, res) => {
 
 /**
  * @openapi
- * /comments:
+ * /comments/:id:
  *   delete:
  *     summary: Delete a comment
  *     description: Delete a comment

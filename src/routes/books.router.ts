@@ -22,7 +22,7 @@ const jwtService = new JWTService()
 
 /**
  * @openapi
- * /books:
+ * /books/id/:bookID:
  *   get:
  *     summary: Retrieve a book by ID
  */
@@ -33,7 +33,7 @@ const jwtService = new JWTService()
 
 /**
  * @openapi
- * /books:
+ * /books/title/:title:
  *   get:
  *     summary: Retrieve books by title
  */
@@ -44,7 +44,7 @@ const jwtService = new JWTService()
 
 /**
  * @openapi
- * /books:
+ * /books/isbn/:isbn:
  *   get:
  *     summary: Retrieve a book by ISBN
  */
@@ -55,18 +55,18 @@ const jwtService = new JWTService()
 
 /**
  * @openapi
- * /books:
+ * /books/author/:author:
  *   get:
  *     summary: Retrieve books from author
  */
- booksRouter.get('/author/:authorID', (req, res) => {
-    const books = booksService.getBooksByAuthor(req.params.authorID);
+ booksRouter.get('/author/:author', (req, res) => {
+    const books = booksService.getBooksByAuthor(req.params.author);
     res.status(200).send(books);
 })
 
 /**
  * @openapi
- * /books:
+ * /books/category/:category:
  *   get:
  *     summary: Retrieve books from category
  */
@@ -77,7 +77,7 @@ const jwtService = new JWTService()
 
 /**
  * @openapi
- * /users:
+ * /books:
  *   post:
  *     summary: Create a new book
  *     description: creates a new book
@@ -92,7 +92,7 @@ booksRouter.post('/', jwtService.verify, (req, res) => {
 
 /**
  * @openapi
- * /users:
+ * /books/:id:
  *   put:
  *     summary: Edit a book
  *     description: Edit a book
@@ -107,7 +107,7 @@ booksRouter.put('/:bookId', jwtService.verify, (req, res) => {
 
 /**
  * @openapi
- * /users:
+ * /books/:id:
  *   delete:
  *     summary: Delete a book
  *     description: Delete a book

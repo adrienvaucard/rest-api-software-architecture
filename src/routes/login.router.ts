@@ -6,6 +6,13 @@ const loginRouter = Router();
 
 const usersService = new UsersService();
 
+/**
+ * @openapi
+ * /login:
+ *   post:
+ *     summary: Authenticate
+ *     description: Authenticate
+ */
 loginRouter.post('/', (request, response) => {
     try {
         const user = usersService.login(request.body.email, request.body.password)

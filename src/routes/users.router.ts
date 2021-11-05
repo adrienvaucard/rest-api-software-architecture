@@ -22,7 +22,7 @@ usersRouter.get('/', jwtService.verify, (req, res) => {
 
 /**
  * @openapi
- * /users:
+ * /users/:id:
  *   get:
  *     summary: Retrieve user
  */
@@ -48,7 +48,7 @@ usersRouter.post('/', jwtService.verify, (req, res) => {
 
 /**
  * @openapi
- * /users:
+ * /users/:id:
  *   put:
  *     summary: Edit a user
  */
@@ -62,7 +62,7 @@ usersRouter.put('/:userID', jwtService.verify, (req, res) => {
 
 /**
  * @openapi
- * /users:
+ * /users/:id:
  *   delete:
  *     summary: Delete a user
  */

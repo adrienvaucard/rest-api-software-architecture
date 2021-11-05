@@ -37,7 +37,7 @@ ordersRouter.post('/', (req, res) => {
 
 /**
  * @openapi
- * /orders:
+ * /orders/:id:
  *   put:
  *     summary: Edit an order
  *     description: Edit an order
@@ -52,7 +52,7 @@ ordersRouter.put('/:orderID', jwtService.verify, (req, res) => {
 
 /**
  * @openapi
- * /orders:
+ * /orders/:id:
  *   delete:
  *     summary: Delete an order
  *     description: Delete an order

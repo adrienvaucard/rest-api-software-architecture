@@ -35,7 +35,7 @@ messagesRouter.post('/', (req, res) => {
 
 /**
  * @openapi
- * /messages:
+ * /messages/:id:
  *   put:
  *     summary: Update a message
  *     description: Update a message
@@ -50,7 +50,7 @@ messagesRouter.put('/:messageId', (req, res) => {
 
 /**
  * @openapi
- * /messages:
+ * /messages/:id:
  *   delete:
  *     summary: Delete a message
  *     description: Delete a message
