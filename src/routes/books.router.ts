@@ -8,15 +8,69 @@ const booksService = new BooksService();
 
 /**
  * @openapi
- * /users:
+ * /books:
  *   get:
- *     summary: Retrieve a list of users
+ *     summary: Retrieve a list of books
  */
  booksRouter.get('/', (req, res) => {
     const books = booksService.getAllBooks();
     res.status(200).send(books);
 })
 
+/**
+ * @openapi
+ * /books:
+ *   get:
+ *     summary: Retrieve a book by ID
+ */
+ booksRouter.get('/id/:bookID', (req, res) => {
+    const book = booksService.getBookByID(req.params.bookID);
+    res.status(200).send(book);
+})
+
+/**
+ * @openapi
+ * /books:
+ *   get:
+ *     summary: Retrieve books by title
+ */
+ booksRouter.get('/title/:title', (req, res) => {
+    const books = booksService.getBooksByTitle(req.params.title);
+    res.status(200).send(books);
+})
+
+/**
+ * @openapi
+ * /books:
+ *   get:
+ *     summary: Retrieve a book by ISBN
+ */
+ booksRouter.get('/isbn/:isbn', (req, res) => {
+    const book = booksService.getBookByISBN(req.params.isbn);
+    res.status(200).send(book);
+})
+
+/**
+ * @openapi
+ * /books:
+ *   get:
+ *     summary: Retrieve books from author
+ */
+ booksRouter.get('/author/:authorID', (req, res) => {
+    const books = booksService.getBooksByAuthor(req.params.authorID);
+    res.status(200).send(books);
+})
+
+/**
+ * @openapi
+ * /books:
+ *   get:
+ *     summary: Retrieve books from category
+ */
+ booksRouter.get('/category/:categoryID', (req, res) => {
+    const books = booksService.getBooksByAuthor(req.params.categoryID);
+    res.status(200).send(books);
+})
 
 /**
  * @openapi

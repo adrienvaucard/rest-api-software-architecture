@@ -1,4 +1,3 @@
-import { UnknownUserError } from '../errors/unknown-user.error'
 import { UnknownBookError } from '../errors/unknown-book.error'
 import { BookDAO } from '../dao/books.dao';
 import { BookModel } from '../models/book.model';
@@ -10,6 +9,26 @@ export class BooksService {
 
     public getAllBooks(): BookModel[] {
         return this.bookDAO.list()
+    }
+
+    public getBookByID(id: string) {
+        return this.bookDAO.findById(id);
+    }
+
+    public getBookByISBN(isbn: string) {
+        return this.bookDAO.findByISBN(isbn);
+    }
+
+    public getBooksByTitle(isbn: string) {
+        return this.bookDAO.findByTitle(isbn);
+    }
+
+    public getBooksByAuthor(isbn: string) {
+        return this.bookDAO.findByAuthor(isbn);
+    }
+
+    public getBooksByCategory(category: string) {
+        return this.bookDAO.findByCategory(category);
     }
 
     public createBook(book: BookModel) {

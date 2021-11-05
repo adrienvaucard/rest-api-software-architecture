@@ -15,6 +15,28 @@ export class BookDAO {
         return this.databaseConnection.getData('/books');
     }
 
+    public findById(id: string): BookModel {
+        const index = this.getBookIndexByID(id);
+        return this.databaseConnection.getData(`/books[${index}]`)
+    }
+
+    public findByISBN(isbn: string): BookModel {
+        const index = this.getBookIndexByISBN(isbn);
+        return this.databaseConnection.getData(`/books[${index}]`)
+    }
+
+    public findByTitle(title: string): BookModel[] {
+        return this.getBooksByTitle(title);
+    }
+
+    public findByAuthor(author: string): BookModel[] {
+        return this.getBooksByAuthor(author);
+    }
+
+    public findByCategory(category: string): BookModel[] {
+        return this.getBooksByCategory(category);
+    }
+
     public create(book: BookModel): BookModel {
         this.databaseConnection.push('/books[]', book);
         console.log(book)
@@ -52,7 +74,23 @@ export class BookDAO {
         return null;
     }
 
-    private getBookIndexByID(bookID: string): number {
-        return this.databaseConnection.getIndex('/books', bookID, 'id');
+    private getBookIndexByID(id: string): number {
+        return this.databaseConnection.getIndex('/books', id, 'id');
+    }
+
+    private getBookIndexByISBN(isbn: string): number {
+        return this.databaseConnection.getIndex('/books', isbn, 'isbn');
+    }
+
+    private getBooksByTitle(title: string): BookModel[] {
+        return this.databaseConnection.filter('/books', (book) => book.title.toLowerCase().includes(title.toLowerCase()));
+    }
+
+    private getBooksByAuthor(author: string): BookModel[] {
+        return this.databaseConnection.filter('/books', (book) => book.author.toLowerCase() === author.toLowerCase());
+    }
+
+    private getBooksByCategory(category: string): BookModel[] {
+        return this.databaseConnection.filter('/books', (book) => book.category.toLowerCase() === category.toLowerCase());
     }
 }
