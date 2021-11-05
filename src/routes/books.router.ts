@@ -27,7 +27,7 @@ const booksService = new BooksService();
  */
 booksRouter.post('/', (req, res) => {
     try {
-        booksService.createBook(req.body)
+        res.status(200).send(booksService.createBook(req.body))
     } catch (error) {
         res.status(400).send(error.message)
     }
@@ -35,7 +35,7 @@ booksRouter.post('/', (req, res) => {
 
 booksRouter.put('/:bookId', (req, res) => {
     try {
-        booksService.updateBook(req.body);
+        res.status(200).send(booksService.updateBook(req.body));
     } catch (error) {
         res.status(400).send(error.message);
     }
@@ -43,7 +43,7 @@ booksRouter.put('/:bookId', (req, res) => {
 
 booksRouter.delete('/:bookID', (req: any, res) => {
     try {
-        booksService.deleteBook(req.params.bookID, req.book.id)
+        res.status(200).send(booksService.deleteBook(req.params.bookID, req.book.id))
     } catch (error) {
         if (error instanceof UnknownBookError) {
             res.status(404)

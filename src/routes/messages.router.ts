@@ -27,7 +27,7 @@ const messagesService = new MessagesService();
  */
 messagesRouter.post('/', (req, res) => {
     try {
-        messagesService.createMessage(req.body)
+        res.status(200).send(messagesService.createMessage(req.body))
     } catch (error) {
         res.status(400).send(error.message)
     }
@@ -35,7 +35,7 @@ messagesRouter.post('/', (req, res) => {
 
 messagesRouter.put('/:messageId', (req, res) => {
     try {
-        messagesService.updateMessage(req.body);
+        res.status(200).send(messagesService.updateMessage(req.body));
     } catch (error) {
         res.status(400).send(error.message);
     }
@@ -43,7 +43,7 @@ messagesRouter.put('/:messageId', (req, res) => {
 
 messagesRouter.delete('/:messageID', (req: any, res) => {
     try {
-        messagesService.deleteMessage(req.params.messageID, req.message.id)
+        res.status(200).send(messagesService.deleteMessage(req.params.messageID, req.message.id))
     } catch (error) {
         if (error instanceof UnknownMessageError) {
             res.status(404)

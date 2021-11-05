@@ -51,5 +51,4 @@ export class BooksService {
     private checkBookToCreateIsValid(book: BookModel) {
         return book && book.isbn && book.title && book.subtitle && book.author
     }
-
 }

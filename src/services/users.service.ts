@@ -12,6 +12,10 @@ export class UsersService {
         return this.userDAO.list()
     }
 
+    public getUser(userID: string) {
+        return this.userDAO.getByID(userID);
+    }
+
     public createUser(user: UserModel) {
         if (!this.checkUserToCreateIsValid(user)) {
             throw new Error('invalid user');

@@ -17,6 +17,16 @@ usersRouter.get('/', (req, res) => {
     res.status(200).send(users);
 })
 
+/**
+ * @openapi
+ * /users:
+ *   get:
+ *     summary: Retrieve user
+ */
+ usersRouter.get('/:userID', (req, res) => {
+    const user = usersService.getUser(req.params.userID);
+    res.status(200).send(user);
+})
 
 /**
  * @openapi
@@ -27,7 +37,7 @@ usersRouter.get('/', (req, res) => {
  */
 usersRouter.post('/', (req, res) => {
     try {
-        usersService.createUser(req.body)
+        res.status(200).send(usersService.createUser(req.body))
     } catch (error) {
         res.status(400).send(error.message)
     }
@@ -35,15 +45,18 @@ usersRouter.post('/', (req, res) => {
 
 usersRouter.put('/:userID', (req, res) => {
     try {
-        usersService.updateUser(req.body);
+        res.status(200).send(usersService.updateUser(req.body));
     } catch (error) {
         res.status(400).send(error.message);
     }
 })
 
 usersRouter.delete('/:userID', (req: any, res) => {
+    req.user = {
+        id: 1
+    }
     try {
-        usersService.deleteUser(req.params.userID, req.user.id)
+        res.status(200).send(usersService.deleteUser(req.params.userID, req.user.id))
     } catch (error) {
         if (error instanceof UnknownUserError) {
             res.status(404)

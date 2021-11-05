@@ -17,6 +17,7 @@ export class BookDAO {
 
     public create(book: BookModel): BookModel {
         this.databaseConnection.push('/books[]', book);
+        console.log(book)
         return book;
     }
 
