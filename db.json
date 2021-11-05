@@ -118,54 +118,6 @@
             "pages": 500,
             "description": "Miaule.",
             "website": "https://lafermedesanimaux.net/",
-            "id": "735c8d44-a7c3-4c61-aebd-96564128a822"
-        },
-        {
-            "isbn": "575893875834",
-            "title": "La ferme des animaux",
-            "subtitle": "coucou",
-            "author": "Georges Orwell",
-            "published": "2018-12-04T00:00:00.000Z",
-            "publisher": "No Starch Press",
-            "pages": 500,
-            "description": "Miaule.",
-            "website": "https://lafermedesanimaux.net/",
-            "id": "7fa17408-b5a0-4e57-b5ac-8bc7a0895058"
-        },
-        {
-            "isbn": "575893875834",
-            "title": "La ferme des animaux",
-            "subtitle": "coucou",
-            "author": "Georges Orwell",
-            "published": "2018-12-04T00:00:00.000Z",
-            "publisher": "No Starch Press",
-            "pages": 500,
-            "description": "Miaule.",
-            "website": "https://lafermedesanimaux.net/",
-            "id": "30eaebde-5da3-4393-9c4d-9b57e1366fb9"
-        },
-        {
-            "isbn": "575893875834",
-            "title": "La ferme de l'animal",
-            "subtitle": "coucou",
-            "author": "Georges Or bien",
-            "published": "2018-12-04T00:00:00.000Z",
-            "publisher": "No Starch Press",
-            "pages": 500,
-            "description": "Miaule.",
-            "website": "https://lafermedesanimaux.net/",
-            "id": "46248c09-cb9e-4195-82be-9b5a96afec72"
-        },
-        {
-            "isbn": "575893875834",
-            "title": "La ferme des animaux",
-            "subtitle": "coucou",
-            "author": "Georges Orwell",
-            "published": "2018-12-04T00:00:00.000Z",
-            "publisher": "No Starch Press",
-            "pages": 500,
-            "description": "Miaule.",
-            "website": "https://lafermedesanimaux.net/",
             "id": "826f593a-054d-42e2-b694-47fed90690b7"
         }
     ],
@@ -189,6 +141,28 @@
                 "administrator"
             ],
             "id": "164393ac-d86d-480b-bc8a-69bfbaa5090f"
+        },
+        {
+            "firstName": "Adrien",
+            "password": "password",
+            "lastName": "Vrd",
+            "email": "adrien@ynov.com",
+            "roles": [
+                "administrator",
+                "user"
+            ],
+            "id": "8bab4789-82be-46e0-b4ac-b195828acf40"
+        },
+        {
+            "firstName": "Adrien",
+            "password": "password",
+            "lastName": "Vrd",
+            "email": "adrien@ynov.com",
+            "roles": [
+                "administrator",
+                "user"
+            ],
+            "id": "fdc2f527-c2d5-473c-aada-dd94c1f6bbdf"
         }
     ]
 }

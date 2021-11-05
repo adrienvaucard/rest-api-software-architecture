@@ -62,9 +62,9 @@ export class UsersService {
             const token = jwt.sign(
                 user,
                 process.env.TOKEN_KEY,
-                {
-                    expiresIn: "2h"
-                }
+                // {
+                //     expiresIn: "2h"
+                // }
             )
 
             return {

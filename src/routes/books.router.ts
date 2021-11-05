@@ -1,9 +1,12 @@
 import { Router } from 'express';
 import { UnknownBookError } from '../errors/unknown-book.error';
 import { BooksService } from '../services/books.service';
+import { JWTService } from '../services/middleware.service';
+
 const booksRouter = Router();
 
 const booksService = new BooksService();
+const jwtService = new JWTService()
 
 
 /**
@@ -76,10 +79,10 @@ const booksService = new BooksService();
  * @openapi
  * /users:
  *   post:
- *     summary: Create a new user
- *     description: creates a new user
+ *     summary: Create a new book
+ *     description: creates a new book
  */
-booksRouter.post('/', (req, res) => {
+booksRouter.post('/', jwtService.verify, (req, res) => {
     try {
         res.status(200).send(booksService.createBook(req.body))
     } catch (error) {
@@ -91,10 +94,10 @@ booksRouter.post('/', (req, res) => {
  * @openapi
  * /users:
  *   put:
- *     summary: Edit a user
- *     description: Edit a user
+ *     summary: Edit a book
+ *     description: Edit a book
  */
-booksRouter.put('/:bookId', (req, res) => {
+booksRouter.put('/:bookId', jwtService.verify, (req, res) => {
     try {
         res.status(200).send(booksService.updateBook(req.body));
     } catch (error) {
@@ -106,10 +109,10 @@ booksRouter.put('/:bookId', (req, res) => {
  * @openapi
  * /users:
  *   delete:
- *     summary: Delete a user
- *     description: Delete a user
+ *     summary: Delete a book
+ *     description: Delete a book
  */
-booksRouter.delete('/:bookID', (req: any, res) => {
+booksRouter.delete('/:bookID', jwtService.verify, (req: any, res) => {
     try {
         res.status(200).send(booksService.deleteBook(req.params.bookID, req.book.id))
     } catch (error) {
